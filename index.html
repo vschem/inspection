@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ระบบตรวจสภาพรถและแผนซ่อมบำรุง</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18222d;--paper:#f4f5f2;--card:#fff;--line:#d9dcd5;--mut:#667078;--acc:#0e6b63;--amb:#b7791f;--red:#b3261e;--grn:#2d7a4b;--r:8px}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.55 'IBM Plex Sans Thai',system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+.hidden{display:none!important}
+header{background:#fbfbfb;color:var(--ink);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand img{width:56px;height:56px;flex:none;display:block}
+header h1{font-size:18px;margin:0;font-weight:700;line-height:1.3;color:#0b3d8c}
+.brand small{display:block;font-size:12px;font-weight:400;color:var(--mut)}
+@media(max-width:560px){.brand img{width:44px;height:44px}header h1{font-size:15px}.brand small{display:none}}
+nav{background:linear-gradient(180deg,#0b3d8c,#0a4aa8);display:flex;gap:4px;overflow-x:auto;padding:8px 14px 0;position:sticky;top:0;z-index:5;box-shadow:0 3px 10px rgba(11,61,140,.25)}
+nav button{background:none;border:0;border-top:4px solid transparent;border-radius:10px 10px 0 0;padding:10px 20px 11px;font:inherit;font-weight:500;color:#cfe0ff;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:background .15s,color .15s}
+nav button:hover{background:rgba(255,255,255,.14);color:#fff}
+nav button.on{background:var(--paper);color:#0b3d8c;font-weight:700;border-top-color:#f7c600}
+nav button:focus-visible{outline:3px solid #f7c600;outline-offset:-3px}
+.bd{min-width:20px;padding:0 6px;border-radius:99px;background:#f7c600;color:#4a3500;font-size:12px;font-weight:700;line-height:20px;text-align:center}
+.bd.r{background:#e5392e;color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+h2{font-size:20px;margin:0 0 14px}h3{font-size:16px;margin:26px 0 10px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bar h2{margin:0}.bar .tools{display:flex;gap:8px;flex-wrap:wrap}
+input,select,textarea{font:inherit;padding:8px 10px;border:1px solid #bfc4bb;border-radius:var(--r);background:#fff;color:var(--ink);width:100%}
+textarea{resize:vertical}
+:focus-visible{outline:3px solid #7cc4bb;outline-offset:1px}
+label.f{display:block;font-size:13px;font-weight:500;color:var(--mut)}
+label.f>*{margin-top:4px;color:var(--ink);font-weight:400;font-size:15px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.btn{font:inherit;font-weight:600;padding:8px 16px;border-radius:var(--r);border:1px solid #bfc4bb;background:#fff;cursor:pointer;color:var(--ink)}
+.btn:hover{background:#eef0ec}.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}.btn.pri:hover{background:#0a5a53}
+.btn.sm{padding:3px 10px;font-size:13px}.btn.danger{color:var(--red)}.btn:disabled{opacity:.5;cursor:default}
+.plate{display:inline-block;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:0 8px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.chip{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.c-r{background:#fbe4e1;color:var(--red)}.c-a{background:#faecd0;color:#8a5a0a}.c-g{background:#dcf0e3;color:var(--grn)}.c-n{background:#e9ebe6;color:var(--mut)}
+.mut{color:var(--mut)}
+/* checklist */
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+summary{padding:11px 14px;font-weight:600;cursor:pointer;background:#e8ece7;display:flex;justify-content:space-between;align-items:center;list-style:none}
+summary::-webkit-details-marker{display:none}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:9px 14px;border-top:1px solid #eceee9;align-items:center}
+.row.fail{background:#fdf1ef}
+.seg{display:flex;gap:6px}
+.seg label{cursor:pointer}.seg input{position:absolute;opacity:0;width:0}
+.seg span{display:inline-block;padding:3px 14px;border:1px solid #bfc4bb;border-radius:99px;font-size:13px;background:#fff}
+.seg input:checked+span.p{background:var(--grn);border-color:var(--grn);color:#fff}
+.seg input:checked+span.x{background:var(--red);border-color:var(--red);color:#fff}
+.seg input:focus-visible+span{outline:3px solid #7cc4bb}
+.note{display:none;grid-column:1/-1;padding:5px 8px;font-size:13px}.row.fail .note{display:block}
+.result{margin:18px 0;padding:14px 16px;border-radius:var(--r);border:1px dashed var(--acc);background:#e7f2f0;font-weight:600}
+/* dashboard */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.kpi{padding:16px 18px;border-right:1px solid var(--line)}.kpi:last-child{border:0}
+.kpi b{display:block;font-size:30px;line-height:1.1}.kpi span{font-size:13px;color:var(--mut)}.kpi.bad b{color:var(--red)}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:600;color:var(--mut);font-size:13px;padding:9px 12px;border-bottom:1px solid var(--line);background:#fafaf8;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #eceee9;vertical-align:top}tr:last-child td{border:0}
+tr.hv{cursor:pointer}tr.hv:hover{background:#f2f6f4}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.stack{display:flex;height:22px;border-radius:99px;overflow:hidden;background:#e9ebe6}
+.stack i{display:block}
+.leg{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.leg u{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;text-decoration:none}
+.hb{display:grid;grid-template-columns:150px 1fr 30px;gap:8px;align-items:center;margin-bottom:7px;font-size:13px}
+.hb div{height:12px;background:#e9ebe6;border-radius:6px}.hb i{display:block;height:100%;background:var(--acc);border-radius:6px}
+.alert{background:#fbe4e1;border:1px solid #efb8b2;color:var(--red);padding:10px 14px;border-radius:var(--r);margin-bottom:12px;font-weight:600}
+.empty{padding:30px;text-align:center;color:var(--mut)}
+/* calendar / km */
+.btn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cal>div{background:#fff;min-height:96px;padding:4px 5px;font-size:12px}
+.cal .dw{min-height:0;background:#fafaf8;font-weight:600;color:var(--mut);text-align:center;padding:6px}
+.cal .out{background:#f6f7f4}.cal .td{box-shadow:inset 0 0 0 2px var(--acc)}
+.cal .dn{font-weight:600;display:flex;justify-content:space-between}
+.cal .ev{display:block;width:100%;text-align:left;border:0;border-radius:4px;padding:1px 5px;margin-top:3px;font:inherit;font-size:11px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.is-admin .cal button.ev{cursor:pointer}
+.pg{height:10px;background:#e9ebe6;border-radius:5px;min-width:100px}.pg i{display:block;height:100%;border-radius:5px}
+.warn{background:#faecd0;border-color:#e8cf95;color:#8a5a0a}
+@media(max-width:700px){.cal>div{min-height:66px;padding:2px}.cal .ev{font-size:10px;padding:0 3px}}
+/* modal/toast */
+dialog{border:0;border-radius:12px;padding:0;width:min(640px,94vw);max-height:92vh;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(24,34,45,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dh h3{margin:0}.db{padding:18px}.df{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+#toast{position:fixed;top:14px;right:14px;z-index:99;padding:11px 16px;border-radius:var(--r);font-weight:500;box-shadow:0 6px 24px rgba(0,0,0,.2);max-width:320px}
+.ok{background:#dcf0e3;color:#1f5a37}.er{background:#fbe4e1;color:var(--red)}
+.adm{display:none}body.is-admin .adm{display:revert}body.is-admin nav .adm{display:block}
+@media(max-width:560px){.hb{grid-template-columns:100px 1fr 26px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img src="data:image/jpeg;base64,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" alt="โลโก้ Vehicle Inspection"><h1>ระบบตรวจสภาพรถและแผนซ่อมบำรุง<small>Vehicle Inspection</small></h1></div>
+  <button class="btn sm" id="lock" type="button">เข้าสู่ระบบ Admin</button>
+</header>
+<nav id="nav">
+  <button data-v="insp" class="on">ตรวจสภาพรถ</button>
+  <button data-v="dash">แดชบอร์ด</button>
+  <button data-v="plan">แผนซ่อมบำรุง<span class="bd hidden" id="bd-plan"></span></button>
+  <button data-v="hist">ประวัติการตรวจ</button>
+  <button data-v="set" class="adm">ตั้งค่า</button>
+</nav>
+<div id="toast" class="hidden" role="status"></div>
+<main>
+
+<!-- ตรวจสภาพรถ -->
+<section id="v-insp" class="view">
+<form id="f">
+  <h2>ข้อมูลการตรวจ</h2>
+  <div class="grid2">
+    <label class="f">ทะเบียนรถ<select id="f-plate" required></select></label>
+    <label class="f">วันที่ตรวจ<input type="date" id="f-date" required></label>
+    <label class="f">ผู้ขับขี่<select id="f-driver" required></select></label>
+    <label class="f">ผู้ตรวจสอบ<select id="f-insp" required></select></label>
+    <label class="f">เลขไมล์ปัจจุบัน (กม.)<input type="number" id="f-mile" min="0" required></label>
+    <label class="f">เลขไมล์ครั้งก่อน (กม.)<input type="number" id="f-prev" readonly></label>
+  </div>
+  <h3>รายการตรวจ</h3>
+  <div id="cl"></div>
+  <div class="result" id="res">เลือกผลตรวจเพื่อดูสรุป</div>
+  <label class="f">ข้อเสนอแนะ<textarea id="f-sug" rows="3"></textarea></label>
+  <div style="margin:14px 0" class="grid2">
+    <div>
+      <label class="btn" for="f-photo">ถ่ายรูป / เลือกรูป</label>
+      <input type="file" id="f-photo" accept="image/*" capture="environment" style="display:none">
+      <img id="f-pv" class="hidden" style="height:90px;margin-left:10px;vertical-align:middle;border-radius:6px" alt="รูปประกอบ">
+    </div>
+  </div>
+  <button class="btn pri" id="f-save" type="submit">บันทึกผลตรวจ</button>
+  <p class="mut" style="font-size:13px">รายการที่ไม่ผ่านจะถูกเพิ่มเข้า “แผนซ่อมบำรุง” อัตโนมัติ</p>
+</form>
+</section>
+
+<!-- แดชบอร์ด -->
+<section id="v-dash" class="view hidden">
+  <div class="bar"><h2>ภาพรวม</h2>
+    <select id="d-per" style="width:auto"><option value="m">เดือนนี้</option><option value="a">ทั้งหมด</option></select></div>
+  <div class="kpis" id="kpis"></div>
+  <div id="d-alert" style="margin-top:12px"></div>
+  <h3>รอบเช็คระยะตามเลขไมล์</h3>
+  <div class="tw"><table id="kmt"></table></div>
+  <h3>ตรวจประจำสัปดาห์ <span class="mut" id="wk" style="font-weight:400"></span></h3>
+  <div class="tw"><table id="wkt"></table></div>
+  <div class="two">
+    <div><h3>สถานะงานซ่อม</h3><div id="stbar"></div></div>
+    <div><h3>รายการที่พบปัญหาบ่อย</h3><div id="top"></div></div>
+  </div>
+</section>
+
+<!-- แผนซ่อมบำรุง -->
+<section id="v-plan" class="view hidden">
+  <div class="bar"><h2>แผนซ่อมบำรุง</h2>
+    <div class="tools">
+      <select id="p-plate" style="width:auto"></select>
+      <select id="p-st" style="width:auto"><option value="open">ที่ยังไม่เสร็จ</option><option value="all">ทั้งหมด</option><option value="over">เกินกำหนด</option><option value="done">แก้ไขแล้ว</option></select>
+      <span style="display:flex;gap:4px"><button class="btn on" id="p-vlist" type="button">รายการ</button><button class="btn" id="p-vcal" type="button">ปฏิทิน</button></span>
+      <button class="btn adm" id="p-add" type="button">+ เพิ่มงานซ่อม</button>
+      <button class="btn" id="p-csv" type="button">ส่งออก CSV</button>
+    </div></div>
+  <div id="p-alert"></div>
+  <div id="p-list" class="tw"><table id="pt"></table></div>
+  <div id="p-cal" class="hidden">
+    <div class="bar"><div class="tools"><button class="btn sm" id="c-prev" type="button">‹ ก่อนหน้า</button><button class="btn sm" id="c-today" type="button">เดือนนี้</button><button class="btn sm" id="c-next" type="button">ถัดไป ›</button></div><b id="c-title"></b></div>
+    <div class="cal" id="cal"></div>
+    <div class="leg"><span><u style="background:var(--red)"></u>เกินกำหนด</span><span><u style="background:var(--amb)"></u>ตามแผน</span><span><u style="background:var(--grn)"></u>แก้ไขแล้ว</span></div>
+    <h3>ยังไม่วางแผน</h3><div id="c-unplanned"></div>
+  </div>
+  <p class="mut" style="font-size:13px" id="p-hint">เข้าสู่ระบบ Admin เพื่อกำหนดแผนและอัปเดตสถานะงานซ่อม</p>
+</section>
+
+<!-- ประวัติ -->
+<section id="v-hist" class="view hidden">
+  <div class="bar"><h2>ประวัติการตรวจ</h2><button class="btn" id="h-csv" type="button">ส่งออก CSV</button></div>
+  <div class="grid2" style="margin-bottom:14px">
+    <label class="f">ทะเบียนรถ<select id="h-plate"></select></label>
+    <label class="f">ตั้งแต่<input type="date" id="h-from"></label>
+    <label class="f">ถึง<input type="date" id="h-to"></label>
+  </div>
+  <div class="tw"><table id="ht"></table></div>
+</section>
+
+<!-- ตั้งค่า -->
+<section id="v-set" class="view hidden">
+  <div class="two">
+    <div><h2>บุคลากร</h2>
+      <div style="display:flex;gap:6px;margin-bottom:10px"><input id="s-name" placeholder="ชื่อ-นามสกุล"><select id="s-role" style="width:auto"><option value="driver">ผู้ขับขี่</option><option value="inspector">ผู้ตรวจสอบ</option></select><button class="btn pri" id="s-addp" type="button">เพิ่ม</button></div>
+      <div class="tw"><table id="s-per"></table></div></div>
+    <div><h2>ทะเบียนรถ</h2>
+      <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"><input id="s-plate" placeholder="ทะเบียน" style="flex:1 1 110px"><input id="s-int" type="number" placeholder="ระยะเช็ค (กม.)" style="flex:1 1 110px"><input id="s-base" type="number" placeholder="ไมล์เช็คล่าสุด (กม.)" style="flex:1 1 130px"><button class="btn pri" id="s-addv" type="button">เพิ่ม</button></div>
+      <div class="tw"><table id="s-veh"></table></div></div>
+  </div>
+</section>
+</main>
+
+<dialog id="dlg"></dialog>
+<dialog id="lg"><div class="dh"><h3>เข้าสู่ระบบ Admin</h3></div><div class="db">
+  <label class="f">รหัสผ่าน<input type="password" id="pw" autocomplete="current-password"></label>
+  <div class="df"><button class="btn" id="lg-x" type="button">ยกเลิก</button><button class="btn pri" id="lg-ok" type="button">เข้าสู่ระบบ</button></div></div></dialog>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbysBGO8g7ata6NUBO4UgEiGfBzA6wLs0NhNCF_3sdx2Ew3iEMHy0lTUI-vR8k9AsjHl/exec";
+const ADMIN_SECRET = "admin123"; // ควรเปลี่ยนก่อนใช้งานจริง
+const C = {ins:'vehicle_inspections', veh:'vehicles', per:'personnel', mt:'maintenance_tracking'};
+const S = {vehicle_inspections:[], vehicles:[], personnel:[], maintenance_tracking:[]};
+const ST = ['ยังไม่ถูกแก้ไข','อยู่ระหว่างรอซ่อม','แก้ไขแล้ว'];
+const CHECK = [
+ {t:"หมวด 1: เอกสารประจำรถ",i:["1.1 เล่มทะเบียน","1.2 ป้ายวงกลม","1.3 พ.ร.บ.","1.4 ประกันภัย","1.5 ใบขับขี่"]},
+ {t:"หมวด 2: สภาพภายนอก",i:["2.1 สภาพตัวถัง","2.2 สีตัวถัง","2.3 ป้ายทะเบียน","2.4 กระจกหน้า","2.5 กระจกมองข้าง","2.6 ยางรถ","2.7 ล้อ/น็อต"]},
+ {t:"หมวด 3: ระบบเครื่องกล",i:["3.1 ระบบเบรก","3.2 เบรกมือ","3.3 พวงมาลัย","3.4 โช้คอัพ","3.5 เครื่องยนต์"]},
+ {t:"หมวด 4: ระบบไฟฟ้า",i:["4.1 ไฟหน้า","4.2 ไฟหรี่/เลี้ยว","4.3 ไฟฉุกเฉิน","4.4 ไฟเบรก","4.5 ไฟถอย","4.6 แตร","4.7 ปัดน้ำฝน"]},
+ {t:"หมวด 5: ความปลอดภัยและความสะอาด",i:["5.1 ดับเพลิง","5.2 เข็มขัดนิรภัย","6.1 ภายนอก","6.2 ภายใน","6.3 ตู้บรรทุก"]}
+];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const TODAY = iso(new Date());
+const D = s => String(s || '').slice(0,10);
+const fmt = s => { s = D(s); if (!s) return '-'; const [y,m,d] = s.split('-'); return `${d}/${m}/${+y+543}`; };
+const num = n => (parseInt(n) || 0).toLocaleString();
+const plateTag = p => `<span class="plate">${esc(p)}</span>`;
+const MONTHS = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+let isAdmin = false, photo = null, planView = 'list', calM = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+const ago30 = (() => { const d = new Date(); d.setDate(d.getDate()-30); return iso(d); })();
+const monday = (() => { const d = new Date(); d.setDate(d.getDate() - (d.getDay()+6)%7); return iso(d); })();
+
+/* ---------- ข้อมูล / Google Sheets ---------- */
+async function api(action, p) {
+  if (!WEB_APP_URL) return;
+  const r = await fetch(WEB_APP_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify({action, ...p})});
+  return r.json();
+}
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
+async function run(fn, okMsg) { try { await fn(); if (okMsg) toast(okMsg); return true; } catch(e) { console.error(e); toast('บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง', 1); return false; } }
+async function add(c, d) { d.id = uid(); S[c].push(d); render(); await api('addDoc', {collection:c, data:d}); return d; }
+async function upd(c, id, d) { Object.assign(S[c].find(x => x.id === id) || {}, d); render(); await api('updateDoc', {collection:c, id, data:d}); }
+async function del(c, id) { S[c] = S[c].filter(x => x.id !== id); render(); await api('deleteDoc', {collection:c, id}); }
+
+function cache() {
+  try {
+    const s = JSON.parse(JSON.stringify(S));
+    s.vehicle_inspections.forEach(r => r.photoBase64 = null);
+    localStorage.setItem('vcache2', JSON.stringify(s));
+  } catch(e) {}
+}
+async function sync() {
+  try { Object.assign(S, JSON.parse(localStorage.getItem('vcache2') || '{}')); } catch(e) {}
+  render();
+  if (!WEB_APP_URL) return;
+  try {
+    const d = await (await fetch(WEB_APP_URL + '?action=getAll')).json();
+    Object.keys(S).forEach(k => { if (Array.isArray(d[k])) S[k] = d[k]; });
+    render(); cleanPhotos();
+  } catch(e) { toast('ดึงข้อมูลจาก Google Sheets ไม่สำเร็จ', 1); }
+}
+async function cleanPhotos() { // ลบรูปของเดือนก่อนหน้า (เริ่มวันที่ 10) เพื่อไม่ให้ชีตเต็ม
+  if (new Date().getDate() < 10) return;
+  for (const r of S.vehicle_inspections) {
+    if (r.photoBase64 && D(r.inspectionDate) < TODAY.slice(0,7)) { r.photoBase64 = null; try { await api('updateDoc', {collection:C.ins, id:r.id, data:{photoBase64:null}}); } catch(e) {} }
+  }
+}
+function toast(m, err) { const t = $('toast'); t.textContent = m; t.className = err ? 'er' : 'ok'; clearTimeout(toast.h); toast.h = setTimeout(() => t.className = 'hidden', err ? 6000 : 3500); }
+
+/* ---------- ตัวช่วยคำนวณ ---------- */
+const CL = r => { try { const c = typeof r.checklist === 'string' ? JSON.parse(r.checklist) : r.checklist; return Object.values(c || {}); } catch(e) { return []; } };
+const isDone = t => t.status === 'แก้ไขแล้ว';
+const isOver = t => !isDone(t) && (t.planDate ? D(t.planDate) < TODAY : D(t.date) < ago30);
+const failItems = r => CL(r).filter(c => c.status === 'fail');
+function taskFor(r, item) { // หัวข้อเดียวกันที่ยังค้างอยู่ นับเป็นงานเดียวตั้งแต่ครั้งแรกที่พบ
+  const d = D(r.inspectionDate), l = S.maintenance_tracking.filter(t => t.plate === r.licensePlate && t.item === item);
+  return l.find(t => t.inspectionId === r.id) || l.find(t => D(t.date) <= d && (!isDone(t) || !t.doneDate || D(t.doneDate) >= d)) || l.find(t => !t.inspectionId && D(t.date) === d);
+}
+function dupGroups() {
+  const g = {}; S.maintenance_tracking.filter(t => !isDone(t)).forEach(t => (g[t.plate + '|' + t.item] ||= []).push(t));
+  return Object.values(g).filter(a => a.length > 1);
+}
+function kmInfo(v) {
+  const cur = Math.max(0, ...S.vehicle_inspections.filter(r => r.licensePlate === v.plate).map(r => +r.currentMileage || 0));
+  const iv = +v.interval || 0, base = (v.lastServiceKm === '' || v.lastServiceKm == null) ? NaN : +v.lastServiceKm;
+  if (!iv) return {cur, state: 'none'};
+  if (isNaN(base)) return {cur, iv, state: 'nobase'};
+  const next = base + iv, left = next - cur;
+  return {cur, iv, base, next, left, used: Math.min(1, Math.max(0, (cur - base) / iv)), state: left < 0 ? 'over' : left <= Math.max(500, iv * .1) ? 'soon' : 'ok'};
+}
+const grade = pct => pct > 99 ? 'ผ่าน' : pct > 90 ? 'ปรับปรุง' : 'ไม่ผ่าน';
+function csv(name, head, rows) {
+  const q = v => `"${String(v ?? '').replace(/"/g,'""')}"`;
+  const blob = new Blob(["\ufeff" + [head, ...rows].map(r => r.map(q).join(',')).join('\n')], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click();
+}
+
+/* ---------- Render ---------- */
+function render() { fillSelects(); renderDash(); renderPlan(); renderHist(); renderSet(); cache(); }
+
+function fillSelects() {
+  const plates = S.vehicles.map(v => v.plate).sort();
+  const names = r => S.personnel.filter(p => p.role === r).map(p => p.name).sort();
+  const fill = (id, list, first, all) => {
+    const el = $(id), cur = el.value;
+    el.innerHTML = (all ? `<option value="all">${first}</option>` : `<option value="" disabled>${first}</option>`) + list.map(v => `<option>${esc(v)}</option>`).join('');
+    el.value = list.includes(cur) || (all && cur === 'all') ? cur : (all ? 'all' : '');
+  };
+  fill('f-plate', plates, 'เลือกทะเบียนรถ'); fill('f-driver', names('driver'), 'เลือกผู้ขับขี่'); fill('f-insp', names('inspector'), 'เลือกผู้ตรวจสอบ');
+  fill('p-plate', plates, 'ทุกทะเบียน', 1); fill('h-plate', plates, 'เลือกทะเบียนรถ');
+}
+
+function renderDash() {
+  const ym = TODAY.slice(0,7), all = $('d-per').value === 'a';
+  const ins = S.vehicle_inspections.filter(r => all || D(r.inspectionDate).startsWith(ym));
+  let p = 0, t = 0;
+  ins.forEach(r => CL(r).forEach(c => { if (c.status === 'pass') { p++; t++; } else if (c.status === 'fail') t++; }));
+  const mt = S.maintenance_tracking, open = mt.filter(x => !isDone(x)), over = open.filter(isOver);
+  const k = (v, l, bad) => `<div class="kpi ${bad ? 'bad' : ''}"><b>${v}</b><span>${l}</span></div>`;
+  $('kpis').innerHTML = k(ins.length, 'ครั้งที่ตรวจ') + k(t ? (p/t*100).toFixed(1) + '%' : '-', 'รายการที่ผ่าน') + k(open.length, 'งานซ่อมคงค้าง') + k(over.length, 'งานเกินกำหนด', over.length);
+  const ki = S.vehicles.map(v => ({v, i: kmInfo(v)})).sort((a,b) => (a.i.left ?? 1e12) - (b.i.left ?? 1e12));
+  $('d-alert').innerHTML = ki.filter(x => x.i.state === 'over' || x.i.state === 'soon').map(x => x.i.state === 'over'
+    ? `<div class="alert">${esc(x.v.plate)} เลยรอบเช็คระยะแล้ว ${num(-x.i.left)} กม.</div>`
+    : `<div class="alert warn">${esc(x.v.plate)} ใกล้ถึงรอบเช็คระยะ เหลืออีก ${num(x.i.left)} กม.</div>`).join('');
+  const kc = {over:'var(--red)', soon:'var(--amb)', ok:'var(--grn)'};
+  $('kmt').innerHTML = `<thead><tr><th>ทะเบียน</th><th>ไมล์ปัจจุบัน</th><th>เช็คล่าสุดที่</th><th>ครบรอบที่</th><th>เหลือ</th><th>ความคืบหน้า</th><th class="adm"></th></tr></thead><tbody>` +
+    (ki.length ? ki.map(({v, i}) => {
+      const mid = i.state === 'none' ? '<td colspan="4" class="mut">ยังไม่ได้ตั้งระยะเช็ค</td>' : i.state === 'nobase' ? `<td colspan="4"><span class="chip c-n">ยังไม่บันทึกไมล์เช็คล่าสุด</span></td>` :
+        `<td>${num(i.base)}</td><td>${num(i.next)}</td><td><span class="chip ${i.state === 'over' ? 'c-r' : i.state === 'soon' ? 'c-a' : 'c-g'}">${i.left < 0 ? 'เกิน ' + num(-i.left) : num(i.left)} กม.</span></td><td><div class="pg"><i style="width:${i.used * 100}%;background:${kc[i.state]}"></i></div></td>`;
+      return `<tr><td>${plateTag(v.plate)}</td><td>${i.cur ? num(i.cur) : '-'}</td>${mid}<td class="adm"><button class="btn sm" data-svc="${v.id}">บันทึกเช็คแล้ว</button></td></tr>`;
+    }).join('') : '<tr><td colspan="7" class="empty">ยังไม่มีทะเบียนรถ</td></tr>') + '</tbody>';
+  $('wk').textContent = `(รอบจันทร์ที่ ${fmt(monday)})`;
+  $('wkt').innerHTML = `<thead><tr><th>ทะเบียน</th><th>ตรวจล่าสุด</th><th>เลขไมล์</th><th>รอบสัปดาห์นี้</th><th>งานซ่อมค้าง</th></tr></thead><tbody>` +
+    (S.vehicles.length ? [...S.vehicles].sort((a,b) => a.plate.localeCompare(b.plate)).map(v => {
+      const rs = S.vehicle_inspections.filter(r => r.licensePlate === v.plate).sort((a,b) => D(b.inspectionDate).localeCompare(D(a.inspectionDate)));
+      const last = rs[0], done = rs.find(r => D(r.inspectionDate) >= monday && D(r.inspectionDate) <= TODAY);
+      const o = open.filter(x => x.plate === v.plate), od = o.filter(isOver).length;
+      const wk = done ? `<span class="chip c-g">ตรวจแล้ว ${fmt(done.inspectionDate)}</span>` : TODAY === monday ? '<span class="chip c-a">ถึงกำหนดวันนี้</span>' : '<span class="chip c-r">ค้างตรวจ</span>';
+      return `<tr><td>${plateTag(v.plate)}</td><td>${last ? fmt(last.inspectionDate) : '-'}</td><td>${last ? num(last.currentMileage) : '-'}</td><td>${wk}</td><td>${o.length ? `${o.length} รายการ` : '-'} ${od ? `<span class="chip c-r">เกินกำหนด ${od}</span>` : ''}</td></tr>`;
+    }).join('') : '<tr><td colspan="5" class="empty">ยังไม่มีทะเบียนรถ — เพิ่มได้ที่ตั้งค่า (Admin)</td></tr>') + '</tbody>';
+  const cnt = ST.map(s => mt.filter(x => x.status === s || (s === ST[0] && !ST.includes(x.status))).length), col = ['var(--red)','var(--amb)','var(--grn)'];
+  $('stbar').innerHTML = mt.length ? `<div class="stack">${cnt.map((c,i) => c ? `<i style="flex:${c};background:${col[i]}"></i>` : '').join('')}</div><div class="leg">${ST.map((s,i) => `<span><u style="background:${col[i]}"></u>${s} ${cnt[i]}</span>`).join('')}</div>` : '<p class="mut">ยังไม่มีงานซ่อม</p>';
+  const by = {}; mt.forEach(x => by[x.item] = (by[x.item] || 0) + (+x.count || 1));
+  const top = Object.entries(by).sort((a,b) => b[1]-a[1]).slice(0,6);
+  $('top').innerHTML = top.length ? top.map(([n,c]) => `<div class="hb"><span>${esc(n)}</span><div><i style="width:${c/top[0][1]*100}%"></i></div><b>${c}</b></div>`).join('') : '<p class="mut">ยังไม่มีข้อมูล</p>';
+}
+
+function planRows() {
+  const pl = $('p-plate').value, f = $('p-st').value;
+  return S.maintenance_tracking.filter(t => (pl === 'all' || t.plate === pl) && (f === 'all' || (f === 'open' && !isDone(t)) || (f === 'done' && isDone(t)) || (f === 'over' && isOver(t))))
+    .sort((a,b) => isDone(a) - isDone(b) || isOver(b) - isOver(a) || (b.priority === 'ด่วน') - (a.priority === 'ด่วน') || (D(a.planDate) || '9').localeCompare(D(b.planDate) || '9') || D(a.date).localeCompare(D(b.date)));
+}
+function renderPlan() {
+  const over = S.maintenance_tracking.filter(isOver).length, openN = S.maintenance_tracking.filter(t => !isDone(t)).length;
+  $('bd-plan').textContent = openN; $('bd-plan').className = 'bd' + (over ? ' r' : '') + (openN ? '' : ' hidden');
+  $('p-alert').innerHTML = over ? `<div class="alert">มีงานซ่อมเกินกำหนด ${over} รายการ (เลยวันที่วางแผน หรือค้างเกิน 30 วันโดยยังไม่วางแผน)</div>` : '';
+  const dg = dupGroups().length;
+  if (isAdmin && dg) $('p-alert').innerHTML += `<div class="alert warn">พบหัวข้อซ้ำที่ยังค้างอยู่ ${dg} หัวข้อ <button class="btn sm" id="p-merge" type="button" style="margin-left:8px">รวมเป็นหัวข้อเดียว</button></div>`;
+  $('p-hint').classList.toggle('hidden', isAdmin);
+  $('p-list').classList.toggle('hidden', planView !== 'list'); $('p-cal').classList.toggle('hidden', planView !== 'cal');
+  $('p-vlist').classList.toggle('on', planView === 'list'); $('p-vcal').classList.toggle('on', planView === 'cal');
+  if (planView === 'cal') renderCal();
+  const rows = planRows();
+  $('pt').innerHTML = `<thead><tr><th>ทะเบียน</th><th>รายการ</th><th>แจ้งเมื่อ</th><th>กำหนดซ่อม</th><th>ผู้รับผิดชอบ</th><th>สถานะ</th><th class="adm"></th></tr></thead><tbody>` +
+    (rows.length ? rows.map(t => {
+      const sc = isDone(t) ? 'c-g' : t.status === ST[1] ? 'c-a' : 'c-r';
+      return `<tr><td>${plateTag(t.plate)}</td>
+        <td><b>${esc(t.item)}</b>${t.priority === 'ด่วน' ? ' <span class="chip c-r">ด่วน</span>' : ''}${(+t.count || 1) > 1 ? ` <span class="chip c-n">พบซ้ำ ${+t.count} ครั้ง · ล่าสุด ${fmt(t.lastSeen)}</span>` : ''}${t.plan ? `<div class="mut">แนวทาง: ${esc(t.plan)}</div>` : ''}${t.notes ? `<div class="mut">หมายเหตุ: ${esc(t.notes)}</div>` : ''}</td>
+        <td>${fmt(t.date)}</td>
+        <td>${t.planDate ? fmt(t.planDate) : '<span class="mut">ยังไม่วางแผน</span>'}${isOver(t) ? '<br><span class="chip c-r">เกินกำหนด</span>' : ''}</td>
+        <td>${esc(t.owner) || '<span class="mut">-</span>'}</td>
+        <td><span class="chip ${sc}">${esc(t.status || ST[0])}</span>${isDone(t) && t.doneDate ? `<div class="mut">${fmt(t.doneDate)}</div>` : ''}</td>
+        <td class="adm" style="white-space:nowrap"><button class="btn sm" data-e="${t.id}">แก้ไข</button>${isDone(t) ? '' : ` <button class="btn sm" data-ok="${t.id}">เสร็จแล้ว</button>`}</td></tr>`;
+    }).join('') : '<tr><td colspan="7" class="empty">ไม่มีงานซ่อมตามเงื่อนไขที่เลือก</td></tr>') + '</tbody>';
+}
+
+function renderCal() {
+  const y = calM.getFullYear(), m = calM.getMonth(), pl = $('p-plate').value;
+  $('c-title').textContent = `${MONTHS[m]} ${y + 543}`;
+  const tasks = S.maintenance_tracking.filter(t => pl === 'all' || t.plate === pl);
+  const first = new Date(y, m, 1).getDay(), dim = new Date(y, m + 1, 0).getDate();
+  const cls = t => isDone(t) ? 'c-g' : isOver(t) ? 'c-r' : 'c-a';
+  const evBtn = t => `<button type="button" class="ev ${cls(t)}" data-e="${t.id}" title="${esc(t.plate + ' ' + t.item)}">${esc(t.plate)} ${esc(t.item)}</button>`;
+  let h = ['อา','จ','อ','พ','พฤ','ศ','ส'].map(d => `<div class="dw">${d}</div>`).join('') + '<div class="out"></div>'.repeat(first);
+  for (let d = 1; d <= dim; d++) {
+    const dt = new Date(y, m, d), ds = iso(dt);
+    const n = S.vehicle_inspections.filter(r => D(r.inspectionDate) === ds && (pl === 'all' || r.licensePlate === pl)).length;
+    h += `<div class="${ds === TODAY ? 'td' : ''}"><div class="dn"><span>${d}</span>${dt.getDay() === 1 ? '<span class="mut">วันตรวจ</span>' : ''}</div>${n ? `<span class="ev c-n">ตรวจแล้ว ${n} คัน</span>` : ''}${tasks.filter(t => D(t.planDate) === ds).map(evBtn).join('')}</div>`;
+  }
+  $('cal').innerHTML = h;
+  const un = tasks.filter(t => !isDone(t) && !t.planDate);
+  $('c-unplanned').innerHTML = un.length ? un.map(t => evBtn(t).replace('class="ev ', 'style="width:auto;margin:0 6px 6px 0;padding:3px 10px" class="ev ')).join('') : '<p class="mut">ทุกงานมีวันที่วางแผนแล้ว</p>';
+}
+
+function histRows() {
+  const p = $('h-plate').value, a = $('h-from').value, b = $('h-to').value;
+  return S.vehicle_inspections.filter(r => r.licensePlate === p && (!a || D(r.inspectionDate) >= a) && (!b || D(r.inspectionDate) <= b)).sort((x,y) => D(y.inspectionDate).localeCompare(D(x.inspectionDate)));
+}
+function renderHist() {
+  const rows = histRows();
+  $('ht').innerHTML = `<thead><tr><th>วันที่</th><th>เลขไมล์</th><th>ผลตรวจ</th><th>ผู้ตรวจ</th><th>งานซ่อม</th></tr></thead><tbody>` +
+    (rows.length ? rows.map(r => {
+      const ts = [...new Set(failItems(r).map(c => taskFor(r, c.description)).filter(Boolean))];
+      const b = !ts.length ? '-' : ts.every(isDone) ? '<span class="chip c-g">แก้ไขครบ</span>' : `<span class="chip c-a">ค้าง ${ts.filter(t => !isDone(t)).length}/${ts.length}</span>`;
+      return `<tr class="hv" data-r="${r.id}"><td>${fmt(r.inspectionDate)}</td><td>${num(r.currentMileage)}</td><td><b style="color:${String(r.overallResult).includes('ไม่ผ่าน') ? 'var(--red)' : 'var(--grn)'}">${esc(r.overallResult)}</b></td><td>${esc(r.inspectorName)}</td><td>${b}</td></tr>`;
+    }).join('') : '<tr><td colspan="5" class="empty">เลือกทะเบียนรถเพื่อดูประวัติ</td></tr>') + '</tbody>';
+}
+
+function renderSet() {
+  $('s-per').innerHTML = S.personnel.map(p => `<tr><td>${p.role === 'driver' ? 'ผู้ขับขี่' : 'ผู้ตรวจสอบ'}</td><td>${esc(p.name)}</td><td><button class="btn sm danger" data-dp="${p.id}">ลบ</button></td></tr>`).join('') || '<tr><td class="empty">ยังไม่มีข้อมูล</td></tr>';
+  $('s-veh').innerHTML = S.vehicles.map(v => `<tr><td>${plateTag(v.plate)}</td><td>${v.interval ? 'เช็คทุก ' + num(v.interval) + ' กม.' : '-'}<div class="mut">${v.lastServiceKm === '' || v.lastServiceKm == null ? 'ยังไม่บันทึกไมล์เช็คล่าสุด' : 'เช็คล่าสุด ' + num(v.lastServiceKm) + ' กม. (' + fmt(v.lastServiceDate) + ')'}</div></td><td style="white-space:nowrap"><button class="btn sm" data-svc="${v.id}">บันทึกเช็คแล้ว</button> <button class="btn sm danger" data-dv="${v.id}">ลบ</button></td></tr>`).join('') || '<tr><td class="empty">ยังไม่มีข้อมูล</td></tr>';
+}
+
+/* ---------- ฟอร์มตรวจ ---------- */
+function renderChecklist() {
+  $('cl').innerHTML = CHECK.map((s, si) => `<details open><summary>${s.t}<button type="button" class="btn sm" data-all="${si}">เลือกผ่านทั้งหมด</button></summary>` +
+    s.i.map((it, ii) => `<div class="row"><span>${it}</span><div class="seg">
+      <label><input type="radio" name="i-${si}-${ii}" value="pass"><span class="p">ผ่าน</span></label>
+      <label><input type="radio" name="i-${si}-${ii}" value="fail"><span class="x">ไม่ผ่าน</span></label></div>
+      <input class="note" name="n-${si}-${ii}" placeholder="ระบุอาการที่พบ" aria-label="หมายเหตุ ${it}"></div>`).join('') + '</details>').join('');
+}
+function calc() {
+  let p = 0, t = 0;
+  CHECK.forEach((s, si) => s.i.forEach((_, ii) => { const c = document.querySelector(`input[name="i-${si}-${ii}"]:checked`); if (c) { t++; if (c.value === 'pass') p++; } }));
+  const pct = t ? p / t * 100 : 0;
+  $('res').textContent = t ? `${grade(pct)} (${pct.toFixed(2)}%) — ตอบแล้ว ${t} จาก ${CHECK.reduce((n,s) => n + s.i.length, 0)} ข้อ` : 'เลือกผลตรวจเพื่อดูสรุป';
+  return {p, t, pct};
+}
+async function saveInspection(e) {
+  e.preventDefault();
+  const {t, pct} = calc();
+  if (!t) return toast('กรุณาเลือกผลตรวจอย่างน้อย 1 รายการ', 1);
+  const mile = +$('f-mile').value, prev = +$('f-prev').value || 0;
+  if (mile < prev && !confirm(`เลขไมล์ (${num(mile)}) ต่ำกว่าครั้งก่อน (${num(prev)}) ยืนยันบันทึกหรือไม่?`)) return;
+  const plate = $('f-plate').value, date = $('f-date').value, driver = $('f-driver').value, btn = $('f-save');
+  const checklist = {}, fails = []; let newN = 0, dupN = 0;
+  CHECK.forEach((s, si) => s.i.forEach((it, ii) => {
+    const st = document.querySelector(`input[name="i-${si}-${ii}"]:checked`)?.value || 'N/A';
+    const notes = st === 'fail' ? document.querySelector(`input[name="n-${si}-${ii}"]`).value : '';
+    checklist[`item-${si}-${ii}`] = {description: it, status: st, notes};
+    if (st === 'fail') fails.push({item: it, notes});
+  }));
+  btn.disabled = true; btn.textContent = 'กำลังบันทึก...';
+  const ok = await run(async () => {
+    const rec = await add(C.ins, {licensePlate: plate, inspectionDate: date, driverName: driver, inspectorName: $('f-insp').value, currentMileage: String(mile), itemsToFix: $('f-sug').value, checklist, photoBase64: photo, timestamp: new Date().toISOString(), overallResult: `${grade(pct)} (${pct.toFixed(2)}%)`});
+    for (const f of fails) {
+      const ex = S.maintenance_tracking.find(t => t.plate === plate && t.item === f.item && !isDone(t));
+      if (ex) { dupN++; if (D(ex.lastSeen || ex.date) !== date) await upd(C.mt, ex.id, {count: (+ex.count || 1) + 1, lastSeen: date, notes: f.notes || ex.notes, updatedAt: new Date().toISOString()}); }
+      else { newN++; await add(C.mt, {inspectionId: rec.id, plate, date, item: f.item, reportedBy: driver, notes: f.notes, status: ST[0], priority: 'ปกติ', planDate: '', owner: '', plan: '', doneDate: '', count: 1, lastSeen: date, updatedAt: new Date().toISOString()}); }
+    }
+  }, fails.length ? `บันทึกแล้ว — งานใหม่ ${newN} · งานเดิมที่ยังค้าง ${dupN} (นับเป็นหัวข้อเดียว)` : 'บันทึกผลตรวจแล้ว');
+  const vv = S.vehicles.find(v => v.plate === plate), kk = vv && kmInfo(vv);
+  if (kk && (kk.state === 'over' || kk.state === 'soon')) setTimeout(() => toast(kk.state === 'over' ? `${plate} เลยรอบเช็คระยะแล้ว ${num(-kk.left)} กม.` : `${plate} ใกล้ถึงรอบเช็คระยะ เหลือ ${num(kk.left)} กม.`, 1), 1800);
+  btn.disabled = false; btn.textContent = 'บันทึกผลตรวจ';
+  if (ok) { $('f').reset(); $('f-date').value = TODAY; photo = null; $('f-pv').classList.add('hidden'); document.querySelectorAll('.row.fail').forEach(r => r.classList.remove('fail')); calc(); prevMile(); }
+}
+function prevMile() { const p = $('f-plate').value; $('f-prev').value = Math.max(0, ...S.vehicle_inspections.filter(r => r.licensePlate === p).map(r => +r.currentMileage || 0)); }
+
+/* ---------- Modal: แก้ไขแผนซ่อม ---------- */
+function openTask(id) {
+  if (!isAdmin) return;
+  const t = id ? S.maintenance_tracking.find(x => x.id === id) : {status: ST[0], priority: 'ปกติ', date: TODAY};
+  const opt = (list, v) => list.map(x => `<option ${x === v ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  $('dlg').innerHTML = `<div class="dh"><h3>${id ? 'แก้ไขแผนซ่อม' : 'เพิ่มงานซ่อม'}</h3><button class="btn sm" data-close type="button">ปิด</button></div>
+  <form class="db" id="tf"><div class="grid2">
+    <label class="f">ทะเบียนรถ<select id="t-plate" ${id ? 'disabled' : 'required'}>${opt(S.vehicles.map(v => v.plate).sort(), t.plate)}</select></label>
+    <label class="f">รายการที่ต้องซ่อม<input id="t-item" value="${esc(t.item)}" required ${id ? 'readonly' : ''}></label>
+    <label class="f">สถานะ<select id="t-st">${opt(ST, t.status)}</select></label>
+    <label class="f">ความสำคัญ<select id="t-pri">${opt(['ปกติ','ด่วน'], t.priority)}</select></label>
+    <label class="f">วันที่วางแผนซ่อม<input type="date" id="t-plan-date" value="${D(t.planDate)}"></label>
+    <label class="f">ผู้รับผิดชอบ / อู่<input id="t-owner" value="${esc(t.owner)}" list="owners"><datalist id="owners">${S.personnel.map(p => `<option value="${esc(p.name)}">`).join('')}</datalist></label>
+  </div>
+  <label class="f" style="margin-top:14px">แนวทางการซ่อม<textarea id="t-plan" rows="2">${esc(t.plan)}</textarea></label>
+  <label class="f" style="margin-top:14px">หมายเหตุ<textarea id="t-notes" rows="2">${esc(t.notes)}</textarea></label>
+  <div class="df">${id ? '<button class="btn danger" id="t-del" type="button" style="margin-right:auto">ลบงาน</button>' : ''}<button class="btn" data-close type="button">ยกเลิก</button><button class="btn pri" type="submit">บันทึก</button></div></form>`;
+  $('dlg').showModal();
+  $('tf').onsubmit = async ev => {
+    ev.preventDefault();
+    const st = $('t-st').value;
+    const d = {status: st, priority: $('t-pri').value, planDate: $('t-plan-date').value, owner: $('t-owner').value.trim(), plan: $('t-plan').value.trim(), notes: $('t-notes').value.trim(), doneDate: st === ST[2] ? (t.doneDate || TODAY) : '', updatedAt: new Date().toISOString()};
+    if (!id && S.maintenance_tracking.some(x => x.plate === $('t-plate').value && x.item === $('t-item').value.trim() && !isDone(x))) return toast('หัวข้อนี้ยังค้างอยู่ในแผนแล้ว แก้ไขงานเดิมแทนการเพิ่มใหม่', 1);
+    $('dlg').close();
+    if (id) await run(() => upd(C.mt, id, d), 'อัปเดตแผนซ่อมแล้ว');
+    else {
+      const pl = $('t-plate').value, it = $('t-item').value.trim();
+      if (S.maintenance_tracking.some(x => x.plate === pl && x.item === it && !isDone(x))) return toast('หัวข้อนี้ยังค้างอยู่ในแผนแล้ว แก้ไขงานเดิมแทนการเพิ่มใหม่', 1);
+      await run(() => add(C.mt, {...d, inspectionId: '', plate: pl, date: TODAY, item: it, reportedBy: 'Admin', count: 1, lastSeen: TODAY}), 'เพิ่มงานซ่อมแล้ว');
+    }
+  };
+  if (id) $('t-del').onclick = async () => { if (confirm('ลบงานซ่อมนี้? ไม่สามารถกู้คืนได้')) { $('dlg').close(); await run(() => del(C.mt, id), 'ลบแล้ว'); } };
+}
+
+function openRecord(id) {
+  const r = S.vehicle_inspections.find(x => x.id === id); if (!r) return;
+  const fails = failItems(r);
+  $('dlg').innerHTML = `<div class="dh"><h3>${plateTag(r.licensePlate)} ${fmt(r.inspectionDate)}</h3><button class="btn sm" data-close type="button">ปิด</button></div><div class="db">
+    <p>ผู้ขับขี่: <b>${esc(r.driverName)}</b> · ผู้ตรวจสอบ: <b>${esc(r.inspectorName)}</b><br>เลขไมล์: <b>${num(r.currentMileage)}</b> กม. · ผลตรวจ: <b>${esc(r.overallResult)}</b></p>
+    ${r.itemsToFix ? `<p>ข้อเสนอแนะ: ${esc(r.itemsToFix)}</p>` : ''}
+    ${r.photoBase64 ? `<img src="${r.photoBase64}" alt="รูปประกอบ" style="max-width:100%;border-radius:8px">` : ''}
+    <h3>รายการที่ไม่ผ่าน</h3>${fails.length ? `<table><tbody>${fails.map(c => { const t = taskFor(r, c.description); return `<tr><td>${esc(c.description)}${c.notes ? `<div class="mut">${esc(c.notes)}</div>` : ''}</td><td><span class="chip ${t ? (isDone(t) ? 'c-g' : t.status === ST[1] ? 'c-a' : 'c-r') : 'c-n'}">${esc(t ? t.status : 'ไม่พบในแผน')}</span></td></tr>`; }).join('')}</tbody></table>` : '<p class="mut">ไม่มีรายการที่ไม่ผ่าน</p>'}</div>`;
+  $('dlg').showModal();
+}
+
+async function mergeDups() {
+  const gs = dupGroups(); if (!gs.length) return;
+  if (!confirm(`รวมหัวข้อซ้ำ ${gs.length} หัวข้อ เป็นงานเดียวต่อหัวข้อ (นับจากวันที่พบครั้งแรก) ใช่หรือไม่?`)) return;
+  await run(async () => {
+    for (const a of gs) {
+      a.sort((x,y) => D(x.date).localeCompare(D(y.date)));
+      const keep = a[0], pick = k => [...a].reverse().find(x => x[k])?.[k] || '';
+      const best = [...a].sort((x,y) => ST.indexOf(y.status) - ST.indexOf(x.status))[0];
+      await upd(C.mt, keep.id, {count: a.reduce((n,x) => n + (+x.count || 1), 0), lastSeen: a.map(x => D(x.lastSeen || x.date)).sort().pop(), status: best.status || ST[0],
+        priority: a.some(x => x.priority === 'ด่วน') ? 'ด่วน' : 'ปกติ', planDate: pick('planDate'), owner: pick('owner'), plan: pick('plan'), notes: pick('notes'), updatedAt: new Date().toISOString()});
+      for (const x of a.slice(1)) await del(C.mt, x.id);
+    }
+  }, 'รวมหัวข้อซ้ำแล้ว');
+}
+function openService(id) {
+  if (!isAdmin) return;
+  const v = S.vehicles.find(x => x.id === id); if (!v) return;
+  $('dlg').innerHTML = `<div class="dh"><h3>บันทึกเช็คระยะ ${plateTag(v.plate)}</h3><button class="btn sm" data-close type="button">ปิด</button></div>
+  <form class="db" id="sf"><div class="grid2"><label class="f">เลขไมล์ที่เช็ค (กม.)<input type="number" id="sv-km" min="0" required value="${kmInfo(v).cur || ''}"></label>
+  <label class="f">วันที่เช็ค<input type="date" id="sv-date" required value="${TODAY}"></label></div>
+  <p class="mut">รอบถัดไปจะคำนวณจากไมล์นี้ + ระยะเช็ค ${v.interval ? num(v.interval) + ' กม.' : '(ยังไม่ได้ตั้งระยะเช็ค)'}</p>
+  <div class="df"><button class="btn" data-close type="button">ยกเลิก</button><button class="btn pri" type="submit">บันทึก</button></div></form>`;
+  $('dlg').showModal();
+  $('sf').onsubmit = async ev => { ev.preventDefault(); const d = {lastServiceKm: +$('sv-km').value, lastServiceDate: $('sv-date').value}; $('dlg').close(); await run(() => upd(C.veh, id, d), 'บันทึกรอบเช็คระยะแล้ว'); };
+}
+
+/* ---------- Events ---------- */
+function setView(v) {
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('hidden', s.id !== 'v-' + v));
+  document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+}
+function setAdmin(on) {
+  isAdmin = on; document.body.classList.toggle('is-admin', on);
+  $('lock').textContent = on ? 'ออกจากระบบ Admin' : 'เข้าสู่ระบบ Admin';
+  if (!on && $('v-set') && !$('v-set').classList.contains('hidden')) setView('insp');
+  renderPlan();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  renderChecklist(); $('f-date').value = TODAY;
+  $('nav').onclick = e => { const b = e.target.closest('button[data-v]'); if (b) setView(b.dataset.v); };
+  $('f').onsubmit = saveInspection;
+  $('cl').addEventListener('change', e => { if (e.target.type === 'radio') { e.target.closest('.row').classList.toggle('fail', e.target.value === 'fail'); calc(); } });
+  $('cl').addEventListener('click', e => {
+    const si = e.target.dataset.all; if (si === undefined) return;
+    e.preventDefault(); e.stopPropagation();
+    document.querySelectorAll(`input[name^="i-${si}-"][value="pass"]`).forEach(r => { r.checked = true; r.closest('.row').classList.remove('fail'); }); calc();
+  });
+  $('f-plate').onchange = prevMile;
+  $('f-photo').onchange = e => {
+    const file = e.target.files[0]; if (!file) return;
+    const rd = new FileReader();
+    rd.onload = ev => { const im = new Image(); im.onload = () => {
+      const c = document.createElement('canvas'); c.width = 500; c.height = im.height * 500 / im.width;
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      photo = c.toDataURL('image/jpeg', .5); $('f-pv').src = photo; $('f-pv').classList.remove('hidden');
+    }; im.src = ev.target.result; };
+    rd.readAsDataURL(file);
+  };
+  ['d-per'].forEach(id => $(id).onchange = renderDash);
+  ['p-plate','p-st'].forEach(id => $(id).onchange = renderPlan);
+  ['h-plate','h-from','h-to'].forEach(id => $(id).onchange = renderHist);
+  $('pt').onclick = e => {
+    const b = e.target.closest('button'); if (!b || !isAdmin) return;
+    if (b.dataset.e) openTask(b.dataset.e);
+    if (b.dataset.ok) run(() => upd(C.mt, b.dataset.ok, {status: ST[2], doneDate: TODAY, updatedAt: new Date().toISOString()}), 'บันทึกว่าแก้ไขแล้ว');
+  };
+  $('p-add').onclick = () => openTask();
+  $('p-vlist').onclick = () => { planView = 'list'; renderPlan(); };
+  $('p-vcal').onclick = () => { planView = 'cal'; renderPlan(); };
+  $('c-prev').onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() - 1, 1); renderCal(); };
+  $('c-next').onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() + 1, 1); renderCal(); };
+  $('c-today').onclick = () => { const n = new Date(); calM = new Date(n.getFullYear(), n.getMonth(), 1); renderCal(); };
+  $('p-cal').onclick = e => { const b = e.target.closest('button[data-e]'); if (b && isAdmin) openTask(b.dataset.e); };
+  $('p-alert').onclick = e => { if (e.target.id === 'p-merge') mergeDups(); };
+  $('kmt').onclick = e => { const b = e.target.closest('button[data-svc]'); if (b) openService(b.dataset.svc); };
+  $('p-csv').onclick = () => csv(`แผนซ่อมบำรุง_${TODAY}.csv`, ['ทะเบียน','รายการ','วันที่แจ้ง','ความสำคัญ','วันที่วางแผน','ผู้รับผิดชอบ','แนวทางซ่อม','สถานะ','วันที่ซ่อมเสร็จ','พบซ้ำ(ครั้ง)','หมายเหตุ'], planRows().map(t => [t.plate, t.item, D(t.date), t.priority, D(t.planDate), t.owner, t.plan, t.status, D(t.doneDate), +t.count || 1, t.notes]));
+  $('ht').onclick = e => { const tr = e.target.closest('tr[data-r]'); if (tr) openRecord(tr.dataset.r); };
+  $('h-csv').onclick = () => {
+    if (!$('h-plate').value) return toast('เลือกทะเบียนรถก่อน', 1);
+    const rows = []; histRows().forEach(r => CL(r).forEach(c => rows.push([D(r.inspectionDate), r.licensePlate, r.driverName, r.inspectorName, r.currentMileage, c.description, c.status, c.notes])));
+    csv(`ประวัติตรวจ_${$('h-plate').value}.csv`, ['วันที่','ทะเบียน','ผู้ขับขี่','ผู้ตรวจสอบ','เลขไมล์','รายการ','ผลตรวจ','หมายเหตุ'], rows);
+  };
+  $('dlg').addEventListener('click', e => { if (e.target.dataset.close !== undefined || e.target === $('dlg')) $('dlg').close(); });
+  $('lock').onclick = () => { if (isAdmin) { setAdmin(false); toast('ออกจากระบบ Admin แล้ว'); } else { $('lg').showModal(); $('pw').focus(); } };
+  $('lg-x').onclick = () => $('lg').close();
+  const login = () => { if ($('pw').value === ADMIN_SECRET) { $('pw').value = ''; $('lg').close(); setAdmin(true); toast('เข้าสู่ระบบ Admin แล้ว'); } else toast('รหัสผ่านไม่ถูกต้อง', 1); };
+  $('lg-ok').onclick = login; $('pw').onkeydown = e => { if (e.key === 'Enter') login(); };
+  $('s-addp').onclick = async () => { const n = $('s-name').value.trim(); if (!n) return toast('กรุณาระบุชื่อ', 1); if (await run(() => add(C.per, {name: n, role: $('s-role').value}), 'เพิ่มบุคลากรแล้ว')) $('s-name').value = ''; };
+  $('s-addv').onclick = async () => { const p = $('s-plate').value.trim(); if (!p) return toast('กรุณาระบุทะเบียน', 1); if (await run(() => add(C.veh, {plate: p, interval: parseInt($('s-int').value) || 0, lastServiceKm: $('s-base').value === '' ? '' : +$('s-base').value, lastServiceDate: $('s-base').value === '' ? '' : TODAY}), 'เพิ่มรถแล้ว')) { $('s-plate').value = ''; $('s-int').value = ''; $('s-base').value = ''; } };
+  $('v-set').onclick = e => {
+    const b = e.target.closest('button'); if (!b || !isAdmin) return;
+    if (b.dataset.svc) openService(b.dataset.svc);
+    if (b.dataset.dp && confirm('ลบบุคลากรนี้?')) run(() => del(C.per, b.dataset.dp), 'ลบแล้ว');
+    if (b.dataset.dv && confirm('ลบรถคันนี้?')) run(() => del(C.veh, b.dataset.dv), 'ลบแล้ว');
+  };
+  sync();
+});
+</script>
+</body>
+</html>
