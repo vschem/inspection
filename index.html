@@ -94,7 +94,7 @@ dialog::backdrop{background:rgba(24,34,45,.6)}
 .ok{background:#dcf0e3;color:#1f5a37}.er{background:#fbe4e1;color:var(--red)}
 .adm{display:none}body.is-admin .adm{display:revert}body.is-admin nav .adm{display:block}
 @media(max-width:560px){.hb{grid-template-columns:100px 1fr 26px}}
-.stf,.mgt{display:none}body.is-staff .stf{display:revert}body.is-staff nav .mgt{display:flex}
+.stf,.mgt{display:none}body.is-exec nav button:not(.mgt){display:none}body.is-staff .stf{display:revert}body.is-staff nav .mgt{display:flex}
 .q{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:14px 16px;border-bottom:1px solid #eceee9;align-items:center}.q:last-child{border:0}
 .q .ttl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.q .sub{font-size:13px;color:var(--mut);margin-top:4px}
 .qwrap{background:var(--card);border:1px solid var(--line);border-left:5px solid #f7c600;border-radius:var(--r)}
@@ -294,7 +294,7 @@ async function sync() {
   try {
     const d = await (await fetch(WEB_APP_URL + '?action=getAll')).json();
     Object.keys(S).forEach(k => { if (Array.isArray(d[k])) S[k] = d[k]; });
-    render(); cleanPhotos();
+    render(); cleanPhotos(); mergeDups(true);
   } catch(e) { toast('ดึงข้อมูลจาก Google Sheets ไม่สำเร็จ', 1); }
 }
 async function cleanPhotos() { // ลบรูปของเดือนก่อนหน้า (เริ่มวันที่ 10) เพื่อไม่ให้ชีตเต็ม
@@ -651,10 +651,12 @@ function renderExec() {
   $('x-dec').innerHTML = dc.length ? dc.map(t => `<div style="margin-bottom:10px">${plateTag(t.plate)} ${esc(t.item)} ${apChip(t)}<div class="mut" style="font-size:13px">${fmt(t.decideAt)}${t.decideNote ? ' · ' + esc(t.decideNote) : ''}</div></div>`).join('') : '<p class="mut">ยังไม่มีการพิจารณา</p>';
 }
 
-async function mergeDups() {
-  const gs = dupGroups(); if (!gs.length) return;
-  if (!confirm(`รวมหัวข้อซ้ำ ${gs.length} หัวข้อ เป็นงานเดียวต่อหัวข้อ (นับจากวันที่พบครั้งแรก) ใช่หรือไม่?`)) return;
-  await run(async () => {
+let merging = false;
+async function mergeDups(auto) {
+  const gs = dupGroups(); if (!gs.length || merging) return;
+  if (!auto && !confirm(`รวมหัวข้อซ้ำ ${gs.length} หัวข้อ เป็นงานเดียวต่อหัวข้อ (นับจากวันที่พบครั้งแรก) ใช่หรือไม่?`)) return;
+  merging = true;
+  const job = async () => {
     for (const a of gs) {
       a.sort((x,y) => D(x.date).localeCompare(D(y.date)));
       const keep = a[0], pick = k => [...a].reverse().find(x => x[k])?.[k] || '';
@@ -663,7 +665,10 @@ async function mergeDups() {
         priority: a.some(x => x.priority === 'ด่วน') ? 'ด่วน' : 'ปกติ', planDate: pick('planDate'), owner: pick('owner'), plan: pick('plan'), notes: pick('notes'), updatedAt: new Date().toISOString()});
       for (const x of a.slice(1)) await del(C.mt, x.id);
     }
-  }, 'รวมหัวข้อซ้ำแล้ว');
+  };
+  try { if (auto) { await job(); toast(`รวมหัวข้อซ้ำให้อัตโนมัติ ${gs.length} หัวข้อ`); } else await run(job, 'รวมหัวข้อซ้ำแล้ว'); }
+  catch (e) { console.error(e); if (auto) toast('รวมหัวข้อซ้ำอัตโนมัติไม่สำเร็จ กด “รวมเป็นหัวข้อเดียว” ในแท็บแผนซ่อมเอง', 1); }
+  finally { merging = false; render(); }
 }
 function openService(id) {
   if (!isAdmin) return;
@@ -679,6 +684,7 @@ function openService(id) {
 
 /* ---------- Events ---------- */
 function setView(v) {
+  if (isExec) v = 'exec'; // ผู้บริหารเห็นเฉพาะส่วนของผู้บริหาร
   document.querySelectorAll('.view').forEach(s => s.classList.toggle('hidden', s.id !== 'v-' + v));
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
 }
