@@ -42,19 +42,31 @@ label.f>*{margin-top:4px;color:var(--ink);font-weight:400;font-size:15px}
 .c-r{background:#fbe4e1;color:var(--red)}.c-a{background:#faecd0;color:#8a5a0a}.c-g{background:#dcf0e3;color:var(--grn)}.c-n{background:#e9ebe6;color:var(--mut)}
 .mut{color:var(--mut)}
 /* checklist */
-details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
-summary{padding:11px 14px;font-weight:600;cursor:pointer;background:#e8ece7;display:flex;justify-content:space-between;align-items:center;list-style:none}
+#f>h3{border-left:4px solid #f7c600;padding-left:10px;color:#0b3d8c}
+details{background:var(--card);border:1px solid #bccbe2;border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 5px rgba(11,61,140,.08)}
+summary{padding:11px 16px;font-weight:700;cursor:pointer;background:#d6e3f6;color:#0b3d8c;border-left:5px solid #f7c600;display:flex;justify-content:space-between;align-items:center;gap:10px;list-style:none}
 summary::-webkit-details-marker{display:none}
-.row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:9px 14px;border-top:1px solid #eceee9;align-items:center}
-.row.fail{background:#fdf1ef}
-.seg{display:flex;gap:6px}
+summary .meta{display:flex;align-items:center;gap:8px;font-weight:400;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+summary .cnt{background:#fff;color:#4a5668;border:1px solid #b5c4dc;padding:1px 10px;border-radius:99px;white-space:nowrap}
+summary .cnt.done{background:#d3eddc;border-color:#8cc9a4;color:#1f5a37;font-weight:600}
+summary .cnt.bad{background:#f9d9d5;border-color:#e59a94;color:#a3221b;font-weight:700}
+summary .btn{background:#fff;color:#0b3d8c;border-color:#b5c4dc;font-weight:600}summary .btn:hover{background:#f7c600;border-color:#f7c600}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:10px 16px;border-top:1px solid #e1e7f0;border-left:5px solid #d3dcea;align-items:center;font-weight:500}
+.row.ok{border-left-color:#4fa874;background:#e6f5ec}
+.row.fail{border-left-color:#d9534a;background:#fbe6e3}
+.seg{display:flex;gap:8px}
 .seg label{cursor:pointer}.seg input{position:absolute;opacity:0;width:0}
-.seg span{display:inline-block;padding:3px 14px;border:1px solid #bfc4bb;border-radius:99px;font-size:13px;background:#fff}
-.seg input:checked+span.p{background:var(--grn);border-color:var(--grn);color:#fff}
-.seg input:checked+span.x{background:var(--red);border-color:var(--red);color:#fff}
-.seg input:focus-visible+span{outline:3px solid #7cc4bb}
-.note{display:none;grid-column:1/-1;padding:5px 8px;font-size:13px}.row.fail .note{display:block}
-.result{margin:18px 0;padding:14px 16px;border-radius:var(--r);border:1px dashed var(--acc);background:#e7f2f0;font-weight:600}
+.seg span{display:inline-block;padding:4px 16px;border:2px solid #b9c4d6;border-radius:99px;font-size:14px;font-weight:600;background:#fff;color:#4a5668;transition:background .12s,border-color .12s}
+.seg label:hover span{border-color:#0b3d8c}
+.seg input:checked+span.p{background:#3a9262;border-color:#3a9262;color:#fff}.seg input:checked+span.p::before{content:"✓ "}
+.seg input:checked+span.x{background:#c9473e;border-color:#c9473e;color:#fff}.seg input:checked+span.x::before{content:"✕ "}
+.seg input:focus-visible+span{outline:3px solid #f7c600}
+.note{display:none;grid-column:1/-1;padding:7px 10px;font-size:14px;border-color:#e59a94;background:#fff}.row.fail .note{display:block}
+.result{margin:18px 0;padding:15px 18px;border-radius:12px;border:2px solid #9fb6d8;background:#e3ecf9;color:#0b3d8c;font-weight:700;font-size:16px}
+.result.pass{border-color:#6fb98f;background:#dcf1e4;color:#1f5a37}
+.result.warn{border-color:#e0b95a;background:#faebc4;color:#7a4f06}
+.result.bad{border-color:#e08a83;background:#f9dcd8;color:#a3221b}
+
 /* dashboard */
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
 .kpi{padding:16px 18px;border-right:1px solid var(--line)}.kpi:last-child{border:0}
@@ -459,7 +471,7 @@ function renderSet() {
 
 /* ---------- ฟอร์มตรวจ ---------- */
 function renderChecklist() {
-  $('cl').innerHTML = CHECK.map((s, si) => `<details open><summary>${s.t}<button type="button" class="btn sm" data-all="${si}">เลือกผ่านทั้งหมด</button></summary>` +
+  $('cl').innerHTML = CHECK.map((s, si) => `<details open><summary><span>${s.t}</span><span class="meta"><span class="cnt" data-cnt="${si}">0/${s.i.length}</span><button type="button" class="btn sm" data-all="${si}">เลือกผ่านทั้งหมด</button></span></summary>` +
     s.i.map((it, ii) => `<div class="row"><span>${it}</span><div class="seg">
       <label><input type="radio" name="i-${si}-${ii}" value="pass"><span class="p">ผ่าน</span></label>
       <label><input type="radio" name="i-${si}-${ii}" value="fail"><span class="x">ไม่ผ่าน</span></label></div>
@@ -469,6 +481,14 @@ function calc() {
   let p = 0, t = 0;
   CHECK.forEach((s, si) => s.i.forEach((_, ii) => { const c = document.querySelector(`input[name="i-${si}-${ii}"]:checked`); if (c) { t++; if (c.value === 'pass') p++; } }));
   const pct = t ? p / t * 100 : 0;
+  CHECK.forEach((s, si) => {
+    let a = 0, f = 0;
+    s.i.forEach((_, ii) => { const c = document.querySelector(`input[name="i-${si}-${ii}"]:checked`); if (c) { a++; if (c.value === 'fail') f++; } });
+    const el = document.querySelector(`[data-cnt="${si}"]`); if (!el) return;
+    el.textContent = f ? `ไม่ผ่าน ${f} · ${a}/${s.i.length}` : `${a}/${s.i.length}`;
+    el.className = 'cnt' + (f ? ' bad' : a === s.i.length ? ' done' : '');
+  });
+  $('res').className = 'result' + (t ? (pct > 99 ? ' pass' : pct > 90 ? ' warn' : ' bad') : '');
   $('res').textContent = t ? `${grade(pct)} (${pct.toFixed(2)}%) — ตอบแล้ว ${t} จาก ${CHECK.reduce((n,s) => n + s.i.length, 0)} ข้อ` : 'เลือกผลตรวจเพื่อดูสรุป';
   return {p, t, pct};
 }
@@ -498,7 +518,7 @@ async function saveInspection(e) {
   const vv = S.vehicles.find(v => v.plate === plate), kk = vv && kmInfo(vv);
   if (kk && (kk.state === 'over' || kk.state === 'soon')) setTimeout(() => toast(kk.state === 'over' ? `${plate} เลยรอบเช็คระยะแล้ว ${num(-kk.left)} กม.` : `${plate} ใกล้ถึงรอบเช็คระยะ เหลือ ${num(kk.left)} กม.`, 1), 1800);
   btn.disabled = false; btn.textContent = 'บันทึกผลตรวจ';
-  if (ok) { $('f').reset(); $('f-date').value = TODAY; photo = null; $('f-pv').classList.add('hidden'); document.querySelectorAll('.row.fail').forEach(r => r.classList.remove('fail')); calc(); prevMile(); }
+  if (ok) { $('f').reset(); $('f-date').value = TODAY; photo = null; $('f-pv').classList.add('hidden'); document.querySelectorAll('.row.fail,.row.ok').forEach(r => r.classList.remove('fail', 'ok')); calc(); prevMile(); }
 }
 function prevMile() { const p = $('f-plate').value; $('f-prev').value = Math.max(0, ...S.vehicle_inspections.filter(r => r.licensePlate === p).map(r => +r.currentMileage || 0)); }
 
@@ -701,11 +721,11 @@ document.addEventListener('DOMContentLoaded', () => {
   renderChecklist(); $('f-date').value = TODAY;
   $('nav').onclick = e => { const b = e.target.closest('button[data-v]'); if (b) setView(b.dataset.v); };
   $('f').onsubmit = saveInspection;
-  $('cl').addEventListener('change', e => { if (e.target.type === 'radio') { e.target.closest('.row').classList.toggle('fail', e.target.value === 'fail'); calc(); } });
+  $('cl').addEventListener('change', e => { if (e.target.type === 'radio') { const rw = e.target.closest('.row'); rw.classList.toggle('fail', e.target.value === 'fail'); rw.classList.toggle('ok', e.target.value === 'pass'); calc(); } });
   $('cl').addEventListener('click', e => {
     const si = e.target.dataset.all; if (si === undefined) return;
     e.preventDefault(); e.stopPropagation();
-    document.querySelectorAll(`input[name^="i-${si}-"][value="pass"]`).forEach(r => { r.checked = true; r.closest('.row').classList.remove('fail'); }); calc();
+    document.querySelectorAll(`input[name^="i-${si}-"][value="pass"]`).forEach(r => { r.checked = true; r.closest('.row').classList.remove('fail'); r.closest('.row').classList.add('ok'); }); calc();
   });
   $('f-plate').onchange = prevMile;
   $('f-photo').onchange = e => {
